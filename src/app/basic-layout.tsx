@@ -1,8 +1,8 @@
-"use client"
+// "use client"
 
 import { ReactNode, useEffect } from "react"
 import { DefaultSession } from "next-auth"
-import Lenis from "@studio-freight/lenis"
+// import Lenis from "@studio-freight/lenis"
 
 import { ThemeProvider } from "@/components/theme/theme-provider"
 import { TooltipProvider } from "@/components/ui/tooltip"
@@ -10,16 +10,18 @@ import Footer from "@/components/Footer"
 import Navbar from "@/components/Navbar"
 
 
-export default function BasicLayout({ children, session }: { children: ReactNode, session: DefaultSession | null }) {
-    useEffect(() => {
-        const lenis = new Lenis()
+export default function BasicLayout(
+    { children, session }:{ children: ReactNode, session: DefaultSession | null }
+) {
+    // useEffect(() => {
+        // const lenis = new Lenis()
 
-        function raf(time: any) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-    }, [])
+        // function raf(time: any) {
+        //     lenis.raf(time);
+        //     requestAnimationFrame(raf);
+        // }
+        // requestAnimationFrame(raf);
+    // }, [])
 
 
     return (
@@ -38,6 +40,6 @@ export default function BasicLayout({ children, session }: { children: ReactNode
                     </TooltipProvider>
                 </ThemeProvider >
             </body>
-        </html >
+        </html>
     )
 }

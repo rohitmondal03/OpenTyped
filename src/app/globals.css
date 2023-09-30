@@ -90,6 +90,7 @@
 /* CUSTOM STYLES */
 * {
   font-family: "Ubuntu", sans-serif;
+  scroll-behavior: smooth;
 }
 
 nav h1,
