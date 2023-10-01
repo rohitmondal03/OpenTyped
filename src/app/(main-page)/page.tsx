@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
 import TextOpacityAnimation from '@/components/text-opacity-animations'
-import img from "../../public/img-3.jpg"
+import img from "../../../public/img-3.jpg"
 
 
 export default async function Home() {
@@ -30,11 +30,19 @@ export default async function Home() {
                     className="text-6xl dark:text-blue-100 font-bold text-left leading-tight w-[90%] mx-auto"
                 />
 
-                <Button className='text-xl mt-10 py-7 rounded-2xl' variant={`default`}>
-                    <Link href={`/projects`}>
-                        Explore Projects
-                    </Link>
-                </Button>
+                <div className='flex flex-col gap-y-3 items-center'>
+                    <Button className='text-xl py-6 rounded-xl w-fit' variant={`default`}>
+                        <Link href={`/projects`}>
+                            Explore Projects
+                        </Link>
+                    </Button>
+
+                    <Button className='text-xl border-2 border-black dark:border-0 py-6 rounded-xl w-fit' variant={`secondary`}>
+                        <Link href={`/add-new-project`}>
+                            Add new Project
+                        </Link>
+                    </Button>
+                </div>
             </div>
         </section >
     )

@@ -2,7 +2,6 @@ import Link from "next/link";
 import { GithubIcon } from "lucide-react";
 
 import { Separator } from "@/components/ui/separator";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Button } from "./ui/button";
 import { socialProfileData } from "@/data/socialProfils";
 
@@ -22,7 +21,7 @@ export default function Footer() {
                     </Link>
                 </div>
 
-                <Separator orientation="horizontal" />
+                <Separator orientation="horizontal" className="h-1" />
 
                 <div className="flex flex-row items-center justify-evenly w-full">
                     {socialProfileData.map((data) => (
@@ -41,12 +40,12 @@ export default function Footer() {
             <div className="w-[50vw] space-y-5">
                 <p className="text-lg">Join OpenTyped today and become a part of a dynamic ecosystem where open source projects and passionate individuals come together to shape the future of technology. Start exploring, contributing, and connecting with the global open source community. Let's build a better world through open source!</p>
 
-                <Separator orientation="horizontal" />
+                <Separator orientation="horizontal" className="h-1" />
 
                 <div className="space-y-3">
                     <p className="font-bold text-2xl">Contributions to OpenTyped are welcomed.</p>
 
-                    <Button variant={"ghost"} className="font-thin">
+                    <Button variant={"ghost"} className="font-thin border">
                         Github<GithubIcon className="ml-2" />
                     </Button>
                 </div>

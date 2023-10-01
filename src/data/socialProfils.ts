@@ -8,12 +8,12 @@ export const socialProfileData: any[]= [
         title: "Github"
     },
     {
-        link: "",
+        link: "https://twitter.com/RohitMo62534745",
         logo: TwitterIcon,
         title: "Twitter"
     },
     {
-        link: "",
+        link: "https://www.linkedin.com/in/rohit-mondal-61662a16b/",
         logo: LinkedinIcon,
         title: "LinkedIn"
     }

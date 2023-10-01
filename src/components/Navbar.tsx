@@ -1,38 +1,26 @@
 import Link from "next/link";
 import { DefaultSession } from "next-auth";
 
+import { getAuthSession } from "@/lib/nextauth";
 import { ModeToggle } from "@/components/theme/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuSeparator, DropdownMenuTrigger,  } from "./ui/dropdown-menu";
 import Logo from "./logo";
 
 
-type userType = {
-    name: string
-    image: string
-}
-
-export default async function Navbar({ session }: { session: DefaultSession | null }) {
-
-    // getting the session details;
-    let sessionUser;
+export default async function Navbar() {
+    const session: DefaultSession| null = await getAuthSession();
+    console.log(session)
 
     // user image
-    let userImage: string | null;
+    const userImage = session?.user?.image
 
-    // Getting the first char of name
-    let firstCharOfUserName: string | null;
+    // user name
+    const userName= session?.user?.name;
 
-    if (session) {
-        sessionUser = session?.user as userType;
-        userImage = session.user?.image as string;
-        firstCharOfUserName = sessionUser.name.charAt(0)
-    } else {
-        sessionUser = null;
-        userImage = null;
-        firstCharOfUserName = null
-    }
+    // first char in name of user
+    const firstCharOfUserName = userName?.charAt(0);
 
 
     return (
@@ -42,13 +30,13 @@ export default async function Navbar({ session }: { session: DefaultSession | nu
                 <h1 className="text-4xl cursor-pointer">OpenTyped</h1>
             </Link>
 
-            <div className="flex flex-row gap-x-3">
+            <div className="flex flex-row gap-x-5">
                 <ModeToggle />
 
                 {session ? (
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <Avatar>
+                            <Avatar className="cursor-pointer">
                                 <AvatarImage src={userImage as string} alt="image" />
                                 <AvatarFallback>{firstCharOfUserName}</AvatarFallback>
                             </Avatar>
@@ -56,7 +44,7 @@ export default async function Navbar({ session }: { session: DefaultSession | nu
 
                         <DropdownMenuContent className="py-4 space-y-4">
                             <DropdownMenuGroup>
-                                <h1 className="text-lg">Welcome, <span className="font-bold">{sessionUser?.name}</span></h1>
+                                <h1 className="text-lg">Welcome, <span className="font-bold">{userName}</span></h1>
                             </DropdownMenuGroup>
 
                             <DropdownMenuSeparator className="h-[1px] bg-black dark:bg-zinc-500" />

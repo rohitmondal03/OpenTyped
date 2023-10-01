@@ -1,13 +1,9 @@
 import { ReactNode } from 'react'
 import type { Metadata } from 'next'
-import { DefaultSession } from 'next-auth'
 
-import { getAuthSession } from '@/lib/nextauth'
 import { ThemeProvider } from '@/components/theme/theme-provider'
-import { TooltipProvider } from '@/components/ui/tooltip'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-// import BasicLayout from './basic-layout'
 
 import './globals.css'
 
@@ -19,16 +15,7 @@ export const metadata: Metadata = {
 
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
-    const session: DefaultSession | null = await getAuthSession();
-
-    // getting user
-    console.log(session?.user)
-
-
     return (
-        // <BasicLayout session={session}>
-        //     {children}
-        // </BasicLayout>
         <html lang="en" suppressHydrationWarning>
             <body>
                 <ThemeProvider
@@ -37,11 +24,9 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <TooltipProvider>
-                        <Navbar session={session} />
-                        {children}
-                        <Footer />
-                    </TooltipProvider>
+                    <Navbar />
+                    {children}
+                    <Footer />
                 </ThemeProvider>
             </body>
         </html >
