@@ -1,7 +1,9 @@
-import { redirect } from "next/navigation";
+"use client"
+
+import { useRouter } from "next/navigation";
+import { FormEvent, useEffect, useState } from "react";
 import { PlusIcon } from "lucide-react";
 
-import { getAuthSession } from "@/lib/nextauth";
 import {
     Card,
     CardContent,
@@ -19,23 +21,55 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { prisma } from "@/lib/db";
 
 
-export default async function AddNewProject() {
-    const session = await getAuthSession();
+export default function AddNewProject() {
 
-    // get user
-    const user = session?.user
+    // API to retrieve user info
 
-    if (!user) redirect("/api/auth/signin")
+    const [enteredData, setEnteredData] = useState({
+        title: "",
+        description: "",
+        ownerName: "",
+        githubLink: "",
+    });
+
+    const router = useRouter();
 
 
-    function submitProject() {}
+    // useEffect(() => {
+    //     async function getUser() {
+    //         await fetch("/api/getUser", { cache: "no-cache" })
+    //             .then((resp) => resp.json())
+    //             .then((data) => setUserData(data))
+    //             .catch((error) => console.log(error))
+    //     }
+    //     getUser();
 
+    //     console.log(userData)
+    // })
+
+    // Submit the entered project details
+    function submitNewProject(e: FormEvent) {
+        //     e.preventDefault();
+
+        //     prisma.project.create({
+        //         data: {
+        //             title: enteredData.title as string,
+        //             description: enteredData.description as string,
+        //             owner_name: enteredData.ownerName as string,
+        //             userId: userData?.id as string,
+        //         }
+        // })
+
+        //     // to redirect to projects page after adding the project
+        //     router.push("/projects")
+    }
 
     return (
         <Card className="w-2/5 mx-auto my-[4rem]">
-            <form>
+            <form onSubmit={submitNewProject}>
                 <CardHeader className="space-y-3">
                     <CardTitle>Publish a new Project 🚀</CardTitle>
 
@@ -59,6 +93,7 @@ export default async function AddNewProject() {
                             placeholder="Title..."
                             type="text"
                             required
+                            autoComplete="off"
                         />
                     </div>
 
@@ -68,6 +103,19 @@ export default async function AddNewProject() {
                             id="project-owner"
                             placeholder="Enter name of owner of project"
                             type="text"
+                            required
+                            autoComplete="off"
+                        />
+                    </div>
+
+                    <div>
+                        <Label htmlFor="project-github-link">Github Link of Project</Label>
+                        <Input
+                            id="project-github-link"
+                            placeholder="e.g. https://github.com/johndoe/opentyped"
+                            type="text"
+                            required
+                            autoComplete="off"
                         />
                     </div>
 
@@ -75,14 +123,19 @@ export default async function AddNewProject() {
                         <Label htmlFor="project-desc">About the project</Label>
                         <Textarea
                             id="project-desc"
-                            placeholder="Write about the project !! Something like, tech stacks used, how it is beneficial, etc."
+                            placeholder="Write something about project !! You can simply paste the github description of project also, only if that's relevant."
                             required
+                            autoComplete="off"
                         />
                     </div>
                 </CardContent>
 
-                <CardFooter className="mx-auto w-full">
-                    <Button className="text-base font-bold">
+                <CardFooter className="mx-auto w-full space-x-5 font-bold">
+                    <Button variant={"secondary"} type="reset">
+                        Reset
+                    </Button>
+
+                    <Button type="submit" className="font-bold">
                         Add Project <PlusIcon className="ml-2 scale-90" />
                     </Button>
                 </CardFooter>

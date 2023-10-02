@@ -54,10 +54,11 @@ model VerificationToken {
 
 model Project {
   id          String   @id @default(cuid())
+  uploadedAt  DateTime @default(now())
   title       String
   description String
-  userId      String
-  uploadedAt  DateTime @default(now())
   owner_name  String
+  github_link String
+  userId      String
   uploader    User     @relation(fields: [userId], references: [id])
 }
