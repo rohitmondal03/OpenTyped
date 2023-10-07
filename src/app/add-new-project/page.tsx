@@ -25,6 +25,9 @@ import { prisma } from "@/lib/db";
 
 
 export default function AddNewProject() {
+    const [userData, setUserData] = useState();
+
+    const router = useRouter();
 
     // API to retrieve user info
 
@@ -35,37 +38,27 @@ export default function AddNewProject() {
         githubLink: "",
     });
 
-    const router = useRouter();
 
+    useEffect(() => {
+        async function getUser() {
+            await fetch("/api/getUser", { cache: "no-cache" })
+                .then((resp) => resp.json())
+                .then((data) => setUserData(data))
+                .catch((error) => console.log(error))
+        }
+        getUser();
 
-    // useEffect(() => {
-    //     async function getUser() {
-    //         await fetch("/api/getUser", { cache: "no-cache" })
-    //             .then((resp) => resp.json())
-    //             .then((data) => setUserData(data))
-    //             .catch((error) => console.log(error))
-    //     }
-    //     getUser();
-
-    //     console.log(userData)
-    // })
+        console.log(userData)
+    })
 
     // Submit the entered project details
     function submitNewProject(e: FormEvent) {
-        //     e.preventDefault();
+        e.preventDefault();
 
-        //     prisma.project.create({
-        //         data: {
-        //             title: enteredData.title as string,
-        //             description: enteredData.description as string,
-        //             owner_name: enteredData.ownerName as string,
-        //             userId: userData?.id as string,
-        //         }
-        // })
-
-        //     // to redirect to projects page after adding the project
-        //     router.push("/projects")
+        // to redirect to projects page after adding the project
+        router.push("/projects")
     }
+    
 
     return (
         <Card className="w-2/5 mx-auto my-[4rem]">
