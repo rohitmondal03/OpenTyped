@@ -59,8 +59,8 @@ model Project {
     description String
     owner_name  String
     github_link String
-    userId      String   @unique
+    userId      String  
     uploader    User     @relation(fields: [userId], references: [id])
 
-    @@unique([userId, id])
+    @@unique([id])
 }
