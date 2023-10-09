@@ -1,14 +1,12 @@
-import { NextResponse } from "next/server";
 import { Session } from "next-auth";
+import { NextResponse } from "next/server";
 
 import { getAuthSession } from "@/lib/nextauth";
 
 
 export async function GET() {
-    const session: Session | null = await getAuthSession();
+    const session: Session= await getAuthSession() as Session;
 
-    // Get user
-    const user: Session["user"] | undefined = session?.user;
-
-    return NextResponse.json(user)
+    console.log(session.user)
+    return NextResponse.json(session.user)
 }

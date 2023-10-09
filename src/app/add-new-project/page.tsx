@@ -1,6 +1,7 @@
 "use client"
 
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
+import { User } from "@prisma/client";
 import { FormEvent, useEffect, useState } from "react";
 import { PlusIcon } from "lucide-react";
 
@@ -21,44 +22,48 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { prisma } from "@/lib/db";
 
+
+type ProjectType = {
+    description: string
+    github_link: string
+    owner_name: string
+    userId: string
+    title: string
+};
 
 export default function AddNewProject() {
-    const [userData, setUserData] = useState();
-
-    const router = useRouter();
-
-    // API to retrieve user info
-
-    const [enteredData, setEnteredData] = useState({
-        title: "",
+    const [user, setUser] = useState<User>()
+    const [enteredData, setEnteredData] = useState<ProjectType>({
         description: "",
-        ownerName: "",
-        githubLink: "",
+        github_link: "",
+        owner_name: "",
+        userId: "",
+        title: ""
     });
 
 
+    // API call to retrieve user info
     useEffect(() => {
         async function getUser() {
-            await fetch("/api/getUser", { cache: "no-cache" })
-                .then((resp) => resp.json())
-                .then((data) => setUserData(data))
-                .catch((error) => console.log(error))
+            await fetch("/api/getUser")
+                .then((data) => data.json())
+                .then((data) => setUser(data))
+                .catch((error) => console.error("Error getting suer", error))
         }
         getUser();
+    }, [])
+    console.log(user)
 
-        console.log(userData)
-    })
 
     // Submit the entered project details
     function submitNewProject(e: FormEvent) {
         e.preventDefault();
 
         // to redirect to projects page after adding the project
-        router.push("/projects")
+        redirect("/projects")
     }
-    
+
 
     return (
         <Card className="w-2/5 mx-auto my-[4rem]">
@@ -87,6 +92,7 @@ export default function AddNewProject() {
                             type="text"
                             required
                             autoComplete="off"
+                            value={enteredData?.title}
                         />
                     </div>
 
@@ -98,6 +104,7 @@ export default function AddNewProject() {
                             type="text"
                             required
                             autoComplete="off"
+                            value={enteredData?.owner_name}
                         />
                     </div>
 
@@ -109,6 +116,7 @@ export default function AddNewProject() {
                             type="text"
                             required
                             autoComplete="off"
+                            value={enteredData?.github_link}
                         />
                     </div>
 
@@ -119,6 +127,7 @@ export default function AddNewProject() {
                             placeholder="Write something about project !! You can simply paste the github description of project also, only if that's relevant."
                             required
                             autoComplete="off"
+                            value={enteredData?.description}
                         />
                     </div>
                 </CardContent>

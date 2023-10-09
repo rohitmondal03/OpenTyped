@@ -12,7 +12,6 @@ export default async function Home() {
             <div className="text-6xl pt-40 space-y-4">
                 <h1 className="dark:text-zinc-200">Welcome to <span className="logo text-amber-400 underline">OpenTyped</span></h1>
                 <h1 className="text-pink-500 dark:text-pink-600 font-semibold">Gateway to the World of Open Source Projects!</h1>
-
             </div>
 
             <div className="my-20 space-y-20">
