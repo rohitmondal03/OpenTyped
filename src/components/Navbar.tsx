@@ -11,7 +11,6 @@ import Logo from "./logo";
 
 export default async function Navbar() {
     const session: DefaultSession| null = await getAuthSession();
-    console.log("Navbar", session)
 
     // user image
     const userImage = session?.user?.image

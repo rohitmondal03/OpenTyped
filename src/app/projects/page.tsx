@@ -15,14 +15,11 @@ import {
 } from "@/components/ui/card"
 
 
-const Projects = async () => {
+export default async function Projects ()  {
     const session = await getServerSession(authOptions)
 
+    // find all projects
     const allProjects = await prisma.project.findMany();
-
-    if (!session) {
-        redirect("/api/auth/signin")
-    }
 
 
     return (
@@ -32,10 +29,10 @@ const Projects = async () => {
             {allProjects.length <= 0 ? (
                 <h1>No projects</h1>
             ) : (
-                <div className="flex flex-row items-center justify-center mt-20 px-16 gap-7 flex-wrap">
+                <div className="flex flex-row items-center justify-center mt-20 gap-7 flex-wrap">
                     {allProjects.map((project: Project) => (
-                        <Link href={`/projects/${project.id}`} key={project.id}>
-                            <Card className="max-w-md transition-all duration-300 hover:scale-110 hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black">
+                        <Link key={project.id} href={`/projects/${project.id}`}>
+                            <Card className="max-w-md transition-all duration-300 hover:scale-105 hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black">
                                 <CardHeader>
                                     <CardTitle className="text-3xl underline">{project.title}</CardTitle>
                                     <CardDescription className="text-lg leading-snug">{project.description}</CardDescription>
@@ -44,12 +41,6 @@ const Projects = async () => {
                                 <CardContent>
                                     <p>Owner / Developer: {project.owner_name}</p>
                                 </CardContent>
-
-                                <Link href={project.github_link} className="underline text-xl">
-                                    <CardFooter>
-                                        Github Link 🔗
-                                    </CardFooter>
-                                </Link>
                             </Card>
                         </Link>
                     ))}
@@ -58,5 +49,3 @@ const Projects = async () => {
         </section>
     )
 }
-
-export default Projects;

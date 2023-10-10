@@ -1,8 +1,8 @@
 "use client"
 
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { User } from "@prisma/client";
-import { FormEvent, useEffect, useState } from "react";
 import { PlusIcon } from "lucide-react";
 
 import {
@@ -33,13 +33,14 @@ type ProjectType = {
 };
 
 export default function AddNewProject() {
+    const router= useRouter();
     const [user, setUser] = useState<User>()
     const [enteredData, setEnteredData] = useState<ProjectType>({
+        owner_name: "",
+        title: "",
         description: "",
         github_link: "",
-        owner_name: "",
         userId: "",
-        title: ""
     });
 
 
@@ -48,20 +49,35 @@ export default function AddNewProject() {
         async function getUser() {
             await fetch("/api/getUser")
                 .then((data) => data.json())
-                .then((data) => setUser(data))
-                .catch((error) => console.error("Error getting suer", error))
+                .then((data) => {setUser(data)})
+                .catch((error) => console.error("Error getting user", error))
         }
         getUser();
-    }, [])
-    console.log(user)
+    }, [user])
 
+    useEffect(() => {
+        setEnteredData(prev => ({...prev, userId: user?.id as string}))
+    }, [user])
+    
 
     // Submit the entered project details
     function submitNewProject(e: FormEvent) {
         e.preventDefault();
 
+        fetch("/api/addNewProjects", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(enteredData)
+        })
+
+        setEnteredData(
+            {title: "", description: "", owner_name: "", github_link: "", userId: ""}
+        )
+
         // to redirect to projects page after adding the project
-        redirect("/projects")
+        router.push("/projects")
     }
 
 
@@ -93,6 +109,9 @@ export default function AddNewProject() {
                             required
                             autoComplete="off"
                             value={enteredData?.title}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                                setEnteredData(prev => ({...prev, title: e.target.value}))
+                            }}
                         />
                     </div>
 
@@ -105,6 +124,9 @@ export default function AddNewProject() {
                             required
                             autoComplete="off"
                             value={enteredData?.owner_name}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                                setEnteredData(prev => ({...prev, owner_name: e.target.value}))
+                            }}
                         />
                     </div>
 
@@ -117,6 +139,9 @@ export default function AddNewProject() {
                             required
                             autoComplete="off"
                             value={enteredData?.github_link}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                                setEnteredData(prev => ({...prev, github_link: e.target.value}))
+                            }}
                         />
                     </div>
 
@@ -128,15 +153,14 @@ export default function AddNewProject() {
                             required
                             autoComplete="off"
                             value={enteredData?.description}
+                            onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
+                                setEnteredData(prev => ({...prev, description: e.target.value}))
+                            }}
                         />
                     </div>
                 </CardContent>
 
-                <CardFooter className="mx-auto w-full space-x-5 font-bold">
-                    <Button variant={"secondary"} type="reset">
-                        Reset
-                    </Button>
-
+                <CardFooter>
                     <Button type="submit" className="font-bold">
                         Add Project <PlusIcon className="ml-2 scale-90" />
                     </Button>

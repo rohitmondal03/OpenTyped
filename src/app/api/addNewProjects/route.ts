@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Project } from "@prisma/client";
 
 import { prisma } from "@/lib/db";
-import { Project } from "@prisma/client";
 
 
 export async function POST(request: NextRequest) {
@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
 
     const { owner_name, title, description, github_link, userId } = body
 
-    await prisma.project.create({
+    const data= await prisma.project.create({
         data:{
             owner_name,
             title,
@@ -18,4 +18,8 @@ export async function POST(request: NextRequest) {
             userId
         }
     })
+
+    if (data) {
+        return NextResponse.json(500, {})
+    }
 }

@@ -1,12 +1,21 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { Session } from 'next-auth'
 
+import { getAuthSession } from '@/lib/nextauth'
 import { Button } from '@/components/ui/button'
 import TextOpacityAnimation from '@/components/text-opacity-animations'
+
 import img from "../../../public/img-3.jpg"
 
 
 export default async function Home() {
+    const session: Session | null = await getAuthSession();
+
+    // get user data
+    const user = session?.user;
+
+
     return (
         <section className="text-center">
             <div className="text-6xl pt-40 space-y-4">
@@ -37,12 +46,18 @@ export default async function Home() {
                     </Button>
 
                     <Button className='text-xl border-2 border-black dark:border-0 py-6 rounded-xl w-fit' variant={`secondary`}>
-                        <Link href={`/add-new-project`}>
-                            Add new Project
-                        </Link>
+                        {user ? (
+                            <Link href={`/add-new-project`}>
+                                Add new Project
+                            </Link>
+                        ) : (
+                            <Link href={`/api/auth/signin`}>
+                                Sign In
+                            </Link>
+                        )}
                     </Button>
                 </div>
             </div>
-        </section >
+        </section>
     )
 }

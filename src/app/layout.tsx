@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 import type { Metadata } from 'next'
 
 import { ThemeProvider } from '@/components/theme/theme-provider'
+import { TooltipProvider } from '@/components/ui/tooltip'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
@@ -24,9 +25,11 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <Navbar />
-                    {children}
-                    <Footer />
+                    <TooltipProvider>
+                        <Navbar />
+                        {children}
+                        <Footer />
+                    </TooltipProvider>
                 </ThemeProvider>
             </body>
         </html >
