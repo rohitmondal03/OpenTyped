@@ -5,7 +5,7 @@ import { prisma } from "@/lib/db";
 
 
 export async function POST(request: NextRequest) {
-    const { userId: id } = await request.json();
+    const { projectId: id } = await request.json();
 
     const data: Project = await prisma.project.findUniqueOrThrow({
         where: {
@@ -15,6 +15,6 @@ export async function POST(request: NextRequest) {
 
     const {title, description, github_link, userId, owner_name}= data
 
-    console.log(data)
+    // console.log(data)
     return NextResponse.json({title, description, github_link, userId, owner_name});
 }

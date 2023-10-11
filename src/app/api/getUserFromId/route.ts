@@ -7,11 +7,13 @@ import { prisma } from "@/lib/db";
 export async function POST(request: NextRequest) {
     const { userId } = await request.json();
 
-    const data: User = await prisma.user.findUnique({
+    const data = await prisma.user.findUnique({
         where: {
             id: userId
         }
     }) as User
 
-    return new NextResponse(data.name);
+    const { name } = data;
+
+    return NextResponse.json(name);
 }
