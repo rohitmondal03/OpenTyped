@@ -116,7 +116,7 @@ export default function AddNewProject() {
                     </div>
 
                     <div>
-                        <Label htmlFor="project-owner">Owner of Project</Label>
+                        <Label htmlFor="project-owner">Owner/Developer of Project</Label>
                         <Input
                             id="project-owner"
                             placeholder="Enter name of owner of project"

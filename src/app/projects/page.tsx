@@ -22,7 +22,7 @@ export default async function Projects ()  {
 
     return (
         <section className="flex flex-col items-center justify-center py-20">
-            <h1 className="text-6xl font-bold text-amber-500 underline">Projects</h1>
+            <h1 className="text-6xl font-bold text-amber-400"><span className="underline">Projects</span> 📔</h1>
 
             {allProjects.length <= 0 ? (
                 <h1>No projects</h1>

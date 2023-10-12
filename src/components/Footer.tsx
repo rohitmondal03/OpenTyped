@@ -29,7 +29,7 @@ export default function Footer() {
                             key={data.title}
                             href={data.link}
                             target="_blank"
-                            className="border-2 p-2 rounded-full transition hover:scale-110"
+                            className="border-2 p-2 rounded-xl transition-all hover:scale-110 hover:-rotate-12 hover:rounded-lg"
                         >
                             <data.logo />
                         </Link>
@@ -38,7 +38,7 @@ export default function Footer() {
             </div>
 
             <div className="w-[50vw] space-y-5">
-                <p className="text-lg">Join OpenTyped today and become a part of a dynamic ecosystem where open source projects and passionate individuals come together to shape the future of technology. Start exploring, contributing, and connecting with the global open source community. Let's build a better world through open source!</p>
+                <p className="font-bold">Join OpenTyped today and become a part of open source community. Adding projects can prove helpful to new comers in the community. That's why I encourage you to add here any good project you come through.</p>
 
                 <Separator orientation="horizontal" className="h-1" />
 
