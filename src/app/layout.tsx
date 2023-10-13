@@ -10,10 +10,11 @@ import './globals.css'
 
 
 export const metadata: Metadata = {
-    title: 'OpenTyped',
+    title: 'OpenTyped || Showcasing open source',
     description: 'An open-source platform where userscan add any open source project that they like. ',
     keywords: ["Opentyped", "open source"],
-    robots: "index, follow"
+    robots: "index, follow",
+    generator: "Next.js"
 }
 
 

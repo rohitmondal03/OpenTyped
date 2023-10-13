@@ -30,7 +30,7 @@ export default async function Navbar() {
                 <h1 className="text-4xl cursor-pointer">OpenTyped</h1>
             </Link>
 
-            <div className="flex flex-row gap-x-8">
+            <div className="flex flex-row gap-x-6">
                 <ModeToggle />
 
                 {session ? (
@@ -53,7 +53,7 @@ export default async function Navbar() {
                                 <Link href={"/your-profile"}>
                                     <DropdownMenuItem className="space-x-2">
                                         <User /> 
-                                        <h1>Your Profile</h1>
+                                        <h1>Your Profile and Projects</h1>
                                     </DropdownMenuItem>
                                 </Link>
 
