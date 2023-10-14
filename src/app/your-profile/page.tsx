@@ -17,19 +17,22 @@ export default async function ProfilePage() {
 
     // get user
     const user = session?.user;
-    // console.log(user)
 
-    // get users projects
+    // get user's projects
     const usersProjects = await prisma.project.findMany({
         where: {
             userId: user?.id
         }
     })
 
+    function deleteData() {
+
+    }
+
+
     if (!user) {
         redirect("/api/auth/signin")
     }
-
 
     return (
         <section className="py-20">
@@ -41,7 +44,7 @@ export default async function ProfilePage() {
                     placeholder="blur"
                     blurDataURL={user?.image as string}
                     alt="Opentyped user profile image"
-                    className="rounded-[15%] shadow-[20px_20px_15px] dark:shadow-slate-700 shadow-black transition-all duration-200 ease-out hover:-rotate-12 hover:scale-110 hover:shadow-[0px_0px_0px]"
+                    className="rounded-[15%] shadow-[20px_20px_15px] dark:shadow-0 shadow-black transition-all duration-200 ease-out hover:-rotate-12 hover:scale-110 hover:shadow-[0px_0px_0px]"
                 />
 
                 <div className="space-y-7">
@@ -59,7 +62,6 @@ export default async function ProfilePage() {
 
                     <div className="space-x-3">
                         <Button variant={"destructive"}>Delete user</Button>
-                        <Button variant={"outline"}>Edit info</Button>
                     </div>
                 </div>
             </div>
@@ -83,7 +85,7 @@ export default async function ProfilePage() {
 
                                 <CardContent>
                                     <p className="text-gray-500 dark:text-gray-300 font-bold">Owner / Developer -</p>
-                                    <p className="text-lg italic underline">{project.owner_name}</p>
+                                    <p className="text-lg underline">{project.owner_name}</p>
                                 </CardContent>
                             </Card>
                         </Link>

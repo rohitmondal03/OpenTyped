@@ -5,6 +5,7 @@ import { prisma } from "@/lib/db";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator";
 import LoadingState from "@/components/loading-state";
+import { Button } from "@/components/ui/button";
 
 
 export default async function SingleProjectPage(
@@ -17,6 +18,15 @@ export default async function SingleProjectPage(
             id: slug
         }
     })
+
+    // get uploader
+    const uploaderId = project?.userId;
+    const user = await prisma.user.findFirst({
+        where: {
+            id: uploaderId,
+        }
+    })
+
 
     if (!project) {
         return (
@@ -35,19 +45,17 @@ export default async function SingleProjectPage(
 
             <Separator className="my-7" />
 
-            <CardContent className="flex flex-row items-center justify-between">
+            <CardContent className="flex flex-row items-center justify-around">
                 <div>
                     <h1 className="text-muted-foreground">Uploaded by:</h1>
-                    <p className="text-lg ">username_here_</p>
+                    <p className="text-lg ">{user?.name}</p>
                 </div>
 
-                <Link
-                    href={`${project?.github_link}`}
-                    target="_blank"
-                    className="flex gap-x-2 items-center text-lg underline"
-                >
-                    Github Link <GithubIcon />
-                </Link>
+                <Button variant={"outline"} className="border-2">
+                    <Link href={`${project?.github_link}`} target="_blank">
+                        Github
+                    </Link>
+                </Button>
             </CardContent>
         </Card>
     )

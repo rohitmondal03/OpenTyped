@@ -1,13 +1,20 @@
 import Link from "next/link";
 import { DefaultSession } from "next-auth";
-import { User, Plus } from "lucide-react"
+import { User, Plus, Github } from "lucide-react"
 
 import { getAuthSession } from "@/lib/nextauth";
 import { ModeToggle } from "@/components/theme/mode-toggle";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuItem,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger, } from "@/components/ui/dropdown-menu";
-import Logo from "./logo";
+import Logo from "../logo";
 
 
 export default async function Navbar() {
@@ -24,13 +31,21 @@ export default async function Navbar() {
 
 
     return (
-        <nav className="hidden md:flex flex-row items-center justify-around py-8">
-            <Link href={`/`} className="flex flex-row gap-x-3 items-center">
-                <Logo />
-                <h1 className="text-4xl cursor-pointer">OpenTyped</h1>
-            </Link>
+        <nav className="flex flex-row items-center justify-around py-8">
+            <div className="flex flex-row items-center justify-center gap-x-10">
+                <Link href={`/`} className="flex flex-row gap-x-3 items-center justify-center">
+                    <Logo />
+                    <h1 className="text-4xl cursor-pointer">OpenTyped</h1>
+                </Link>
 
-            <div className="flex flex-row gap-x-6">
+                <Button className="p-2 rounded-full m-0 hover:scale-110 ease-out transition-all">
+                    <Link href={`https://github.com/rohitmondal03/opentyped`} target="_blank">
+                        <Github />
+                    </Link>
+                </Button>
+            </div>
+
+            <div className="flex flex-row items-center gap-x-6">
                 <ModeToggle />
 
                 {session ? (
@@ -52,14 +67,14 @@ export default async function Navbar() {
                             <DropdownMenuGroup className="flex flex-col items-center justify-center">
                                 <Link href={"/your-profile"}>
                                     <DropdownMenuItem className="space-x-2">
-                                        <User /> 
+                                        <User />
                                         <h1>Your Profile and Projects</h1>
                                     </DropdownMenuItem>
                                 </Link>
 
                                 <Link href={"/add-new-project"}>
                                     <DropdownMenuItem className="space-x-2">
-                                        <Plus/>
+                                        <Plus />
                                         <h1>Add new Project</h1>
                                     </DropdownMenuItem>
                                 </Link>

@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
 
     const { owner_name, title, description, github_link, userId } = body
 
-    const data= await prisma.project.create({
+    await prisma.project.create({
         data:{
             owner_name,
             title,
@@ -18,8 +18,4 @@ export async function POST(request: NextRequest) {
             userId
         }
     })
-
-    if (data) {
-        return NextResponse.json(500, {})
-    }
 }

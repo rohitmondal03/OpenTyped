@@ -45,7 +45,7 @@ export default async function Projects() {
 
                                 <CardContent>
                                     <p className="text-gray-500 dark:text-gray-300 font-bold">Owner / Developer -</p>
-                                    <p className="text-lg italic underline">{project.owner_name}</p>
+                                    <p className="text-lg underline">{project.owner_name}</p>
                                 </CardContent>
                             </Card>
                         </Link>

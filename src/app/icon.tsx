@@ -17,7 +17,7 @@ export default function Icon() {
             // ImageResponse JSX element
             <div
                 style={{
-                    fontSize: 24,
+                    fontSize: 20,
                     background: 'white',
                     width: '100%',
                     height: '100%',
@@ -26,10 +26,11 @@ export default function Icon() {
                     justifyContent: 'center',
                     color: 'black',
                     borderRadius: "25%",
-                    fontWeight: 900
+                    fontWeight: 900,
+                    padding: "1px"
                 }}
             >
-                O
+                OT
             </div>
         ),
         // ImageResponse options

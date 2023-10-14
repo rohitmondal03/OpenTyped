@@ -1,8 +1,7 @@
 "use client"
 
-import { redirect, useRouter } from "next/navigation";
-import { ChangeEvent, FormEvent, useEffect, useState, useRef } from "react";
-import { PlusIcon } from "lucide-react";
+import { redirect } from "next/navigation";
+import { ChangeEvent, useEffect, useState, useRef } from "react";
 import { User } from "@prisma/client";
 
 import {
@@ -21,9 +20,8 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
 import { submitNewProject } from "@/actions/submitProject";
-import { revalidatePath } from "next/cache";
+import SubmitBtn from "./submit-btn";
 
 
 type ProjectType = {
@@ -35,8 +33,6 @@ type ProjectType = {
 };
 
 export default function AddNewProjectForm() {
-    const router = useRouter();
-
     const formRef = useRef<HTMLFormElement>(null)
 
     const [user, setUser] = useState<User>()
@@ -71,11 +67,7 @@ export default function AddNewProjectForm() {
             <form
                 ref={formRef}
                 action={async () => {
-                    setEnteredData(
-                        { description: "", owner_name: "", github_link: "", title: "", userId: "" }
-                    )
                     await submitNewProject(enteredData)
-
                     redirect("/projects")  // to redirect to projects page after adding the project
                 }}
             >
@@ -156,9 +148,10 @@ export default function AddNewProjectForm() {
                 </CardContent>
 
                 <CardFooter>
-                    <Button type="submit" className="font-bold">
+                    {/* <Button type="submit" className="font-bold">
                         Add Project <PlusIcon className="ml-2 scale-90" />
-                    </Button>
+                    </Button> */}
+                    <SubmitBtn />
                 </CardFooter>
             </form>
         </Card>

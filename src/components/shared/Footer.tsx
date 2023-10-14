@@ -2,16 +2,17 @@ import Link from "next/link";
 import { GithubIcon } from "lucide-react";
 
 import { Separator } from "@/components/ui/separator";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { socialProfileData } from "@/data/socialProfils";
+import { tech } from "@/data/tech-stacks";
 
 
 export default function Footer() {
     return (
-        <footer className="bg-zinc-900 text-white dark:bg-zinc-200 dark:text-black text-center py-11 flex flex-row items-center justify-around">
-            <div className="space-y-6">
+        <footer className="bg-zinc-900 text-white dark:bg-zinc-200 dark:text-black text-center py-8 flex flex-row items-center justify-around">
+            <div className="space-y-4">
                 <div>
-                    <h1 className="text-2xl font-bold">Made with ❤️ by</h1>
+                    <h1 className="text-2xl font-bold">Developed with ❤️ by</h1>
                     <Link
                         href={`https://portfolio-ten-virid-46.vercel.app`}
                         target="_blank"
@@ -23,7 +24,7 @@ export default function Footer() {
 
                 <Separator orientation="horizontal" className="h-1" />
 
-                <div className="flex flex-row items-center justify-evenly w-full">
+                <div className="flex flex-row items-center justify-around w-full">
                     {socialProfileData.map((data) => (
                         <Link
                             key={data.title}
@@ -37,17 +38,19 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="w-[50vw] space-y-5">
-                <p className="font-bold">Join OpenTyped today and become a part of open source community. Adding projects can prove helpful to new comers in the community. That's why I encourage you to add here any good project you come through.</p>
+            <div className="space-y-3">
+                <h1 className="text-2xl font-bold">⌨️ Made with -</h1>
 
-                <Separator orientation="horizontal" className="h-1" />
-
-                <div className="space-y-3">
-                    <p className="font-bold text-2xl">Contributions to OpenTyped are welcomed.</p>
-
-                    <Button variant={"ghost"} className="font-thin border">
-                        Github<GithubIcon className="ml-2" />
-                    </Button>
+                <div className="grid grid-cols-2 gap-y-1">
+                    {tech.map((data, index: number) => (
+                        <Link
+                            href={data.link}
+                            target="_blank"
+                            className="underline text-lg"
+                        >
+                            {data.title}
+                        </Link>
+                    ))}
                 </div>
             </div>
         </footer>
