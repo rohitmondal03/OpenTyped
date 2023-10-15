@@ -32,18 +32,11 @@ export default async function Navbar() {
 
     return (
         <nav className="flex flex-row items-center justify-around py-8">
-            <div className="flex flex-row items-center justify-center gap-x-10">
-                <Link href={`/`} className="flex flex-row gap-x-3 items-center justify-center">
-                    <Logo />
-                    <h1 className="text-4xl cursor-pointer">OpenTyped</h1>
-                </Link>
+            <Link href={`/`} className="flex flex-row gap-x-3 items-center justify-center">
+                <Logo />
+                <h1 className="text-4xl cursor-pointer">OpenTyped</h1>
+            </Link>
 
-                <Button className="p-2 rounded-full m-0 hover:scale-110 ease-out transition-all">
-                    <Link href={`https://github.com/rohitmondal03/opentyped`} target="_blank">
-                        <Github />
-                    </Link>
-                </Button>
-            </div>
 
             <div className="flex flex-row items-center gap-x-6">
                 <ModeToggle />
@@ -64,18 +57,11 @@ export default async function Navbar() {
 
                             <DropdownMenuSeparator className="h-[1px] bg-black dark:bg-zinc-500" />
 
-                            <DropdownMenuGroup className="flex flex-col items-center justify-center">
+                            <DropdownMenuGroup className="flex flex-col items-center gap-y-1 justify-center">
                                 <Link href={"/your-profile"}>
                                     <DropdownMenuItem className="space-x-2">
                                         <User />
                                         <h1>Your Profile and Projects</h1>
-                                    </DropdownMenuItem>
-                                </Link>
-
-                                <Link href={"/add-new-project"}>
-                                    <DropdownMenuItem className="space-x-2">
-                                        <Plus />
-                                        <h1>Add new Project</h1>
                                     </DropdownMenuItem>
                                 </Link>
 
@@ -96,6 +82,16 @@ export default async function Navbar() {
                 <Link href={`/projects`}>
                     <Button>Projects</Button>
                 </Link>
+
+                {session ? (
+                    <Link href={"/add-new-project"}>
+                        <Button variant={"secondary"} className="flex gap-x-2">
+                            Add Project <Plus />
+                        </Button>
+                    </Link>
+                ) : (
+                    null
+                )}
             </div>
         </nav>
     );

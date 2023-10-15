@@ -5,7 +5,7 @@ export const socialProfileData: any[]= [
     {
         link: "https://github.com/rohitmondal03",
         logo: GithubIcon,
-        title: "Github"
+        title: "Github",
     },
     {
         link: "https://twitter.com/RohitMo62534745",

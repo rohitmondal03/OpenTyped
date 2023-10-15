@@ -14,7 +14,9 @@ type Props = {
 }
 
 
-export default function TextOpacityAnimation({ content, className }: Props) {
+export default function TextOpacityAnimation(
+    { content, className }: Props
+) {
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 

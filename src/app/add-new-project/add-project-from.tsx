@@ -63,7 +63,7 @@ export default function AddNewProjectForm() {
 
 
     return (
-        <Card className="w-2/5 mx-auto my-[4rem]">
+        <Card className="w-2/5 mx-auto my-[4rem] border-2 border-slate-800 dark:border-zinc-300">
             <form
                 ref={formRef}
                 action={async () => {
@@ -81,7 +81,7 @@ export default function AddNewProjectForm() {
                     <Alert>
                         <AlertTitle className="text-red-500">⚠️ Remember !</AlertTitle>
                         <AlertDescription className="text-muted-foreground">
-                            Please ensure that you write the name of owner of the project that you are adding in. Credits must be given who have made and maintaining the project.
+                            Please ensure that you write correct name of owner / developer / organization of the project that you are adding in. Credits must be given who have made and maintaining the project.
                         </AlertDescription>
                     </Alert>
                 </CardHeader>

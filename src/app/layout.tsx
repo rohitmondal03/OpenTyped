@@ -10,7 +10,7 @@ import "./styles/globals.css"
 
 
 export const metadata: Metadata = {
-    title: 'Showcase Open Source Projects',
+    title: 'OpenTyped',
     description: 'Opentyped, an open-source platform where users can add any open source project that they like.',
     keywords: ["Opentyped", "open source"],
     robots: "index, follow",

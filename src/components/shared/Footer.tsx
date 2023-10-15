@@ -1,9 +1,7 @@
 import Link from "next/link";
-import { GithubIcon } from "lucide-react";
 
 import { Separator } from "@/components/ui/separator";
-import { Button } from "../ui/button";
-import { socialProfileData } from "@/data/socialProfils";
+import { socialProfileData } from "@/data/social-profils";
 import { tech } from "@/data/tech-stacks";
 
 
@@ -39,16 +37,16 @@ export default function Footer() {
             </div>
 
             <div className="space-y-3">
-                <h1 className="text-2xl font-bold">⌨️ Made with -</h1>
+                <h1 className="text-2xl font-bold">🧑‍💻 Made with -</h1>
 
-                <div className="grid grid-cols-2 gap-y-1">
-                    {tech.map((data, index: number) => (
+                <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+                    {tech.map((data) => (
                         <Link
                             href={data.link}
                             target="_blank"
-                            className="underline text-lg"
+                            className="underline text-lg flex gap-x-2"
                         >
-                            {data.title}
+                            <data.icon/> {data.title}
                         </Link>
                     ))}
                 </div>

@@ -34,10 +34,10 @@ export default async function Projects() {
             {allProjects.length <= 0 ? (
                 <h1>No projects</h1>
             ) : (
-                <div className="flex flex-row items-center justify-center mt-20 gap-7 flex-wrap">
+                <div className="grid grid-cols-3 items-center mt-20 gap-7">
                     {allProjects.map((project: Project) => (
                         <Link key={project.id} href={`/projects/${project.id}`}>
-                            <Card className="max-w-md transition-all duration-300 hover:scale-105 hover:border hover:border-black dark:hover:border-white">
+                            <Card className="max-w-md border-black dark:border-zinc-300 transition-all duration-300 ease-out hover:scale-110 hover:shadow-zinc-900 hover:dark:shadow-zinc-400 hover:shadow-[0px_0px_50px]">
                                 <CardHeader>
                                     <CardTitle className="text-3xl underline">{project.title}</CardTitle>
                                     <CardDescription className="text-lg leading-snug">{project.description}</CardDescription>
@@ -45,7 +45,7 @@ export default async function Projects() {
 
                                 <CardContent>
                                     <p className="text-gray-500 dark:text-gray-300 font-bold">Owner / Developer -</p>
-                                    <p className="text-lg underline">{project.owner_name}</p>
+                                    <p className="text-lg underline font-bold">{project.owner_name}</p>
                                 </CardContent>
                             </Card>
                         </Link>

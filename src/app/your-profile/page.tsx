@@ -71,13 +71,13 @@ export default async function ProfilePage() {
             <div className="py-20 space-y-12">
                 <h1 className="text-6xl text-center font-bold text-slate-600 dark:text-gray-200">Your contributed <br /> <span className="text-rose-500 underline">Projects</span></h1>
 
-                <div className="px-10 flex flex-row flex-wrap items-center justify-center gap-5">
+                <div className="px-10 grid grid-cols-3 items-center gap-7">
                     {usersProjects.map((project: Project) => (
                         <Link
                             href={`/projects/${project.id}`}
                             key={project.id}
                         >
-                            <Card className="max-w-md transition-all duration-300 hover:scale-105 hover:border hover:border-black dark:hover:border-white">
+                            <Card className="max-w-md border-black dark:border-zinc-300 transition-all duration-300 ease-out hover:scale-110 hover:shadow-zinc-900 hover:dark:shadow-zinc-400 hover:shadow-[0px_0px_50px]">
                                 <CardHeader>
                                     <CardTitle className="text-3xl underline">{project.title}</CardTitle>
                                     <CardDescription className="text-lg leading-snug">{project.description}</CardDescription>

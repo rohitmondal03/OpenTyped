@@ -37,23 +37,27 @@ export default async function SingleProjectPage(
     }
 
     return (
-        <Card className="w-[40vw] mx-auto my-24">
+        <Card className="w-[40vw] mx-auto my-24 border-2 border-black dark:border-zinc-300">
             <CardHeader>
                 <CardTitle className="text-center text-4xl">{project?.title}</CardTitle>
                 <CardDescription className="text-lg text-center">{project?.description}</CardDescription>
             </CardHeader>
 
-            <Separator className="my-7" />
+            <Separator className="my-7 h-[3px] bg-zinc-800 dark:bg-zinc-100" />
 
             <CardContent className="flex flex-row items-center justify-around">
                 <div>
                     <h1 className="text-muted-foreground">Uploaded by:</h1>
-                    <p className="text-lg ">{user?.name}</p>
+                    <p className="text-lg underline font-bold">{user?.name}</p>
                 </div>
 
-                <Button variant={"outline"} className="border-2">
-                    <Link href={`${project?.github_link}`} target="_blank">
-                        Github
+                <Button variant={"outline"} className="border-2 rounded-xl border-black dark:border-zinc-600">
+                    <Link
+                        href={`${project?.github_link}`}
+                        target="_blank"
+                        className="flex gap-x-2 items-center"
+                    >
+                        Github <GithubIcon />
                     </Link>
                 </Button>
             </CardContent>

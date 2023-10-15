@@ -1,6 +1,5 @@
 "use client"
 
-import { useEffect } from "react"
 import { useTheme } from "next-themes"
 import { MoonIcon, SunIcon } from "lucide-react"
 
@@ -14,24 +13,12 @@ import {
 
 
 export function ModeToggle() {
-    const { setTheme, theme } = useTheme()
-
-    useEffect(() => {
-        document.addEventListener("keydown", function (event: KeyboardEvent) {
-            if (event.key === "p" && event.altKey) {
-                theme === "light"
-                    ? setTheme("dark")
-                    : setTheme("light")
-            }
-        });
-    }, [theme])
-
+    const { setTheme } = useTheme()
 
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="border-black border-2 dark:border-white">
-                    <code className="font-bold text-base mr-3">alt+p</code>
+                <Button variant={"outline"} className="rounded-full border-black dark:border-zinc-300 p-3">
                     <SunIcon className="h-[1.2rem] w-[1.2rem] hidden transition-all dark:block" />
                     <MoonIcon className="h-[1.2rem] w-[1.2rem] block transition-all dark:hidden" />
                     <span className="sr-only">Toggle theme</span>
