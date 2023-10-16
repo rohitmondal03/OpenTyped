@@ -29,6 +29,7 @@ export default function Icon() {
                     fontWeight: 900,
                     padding: "1px"
                 }}
+                className='logo'
             >
                 OT
             </div>

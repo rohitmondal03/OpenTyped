@@ -63,7 +63,7 @@ export default function AddNewProjectForm() {
 
 
     return (
-        <Card className="w-2/5 mx-auto my-[4rem] border-2 border-slate-800 dark:border-zinc-300">
+        <Card className="w-[95%] sm:w-[85%] md:w-2/5 mx-auto my-[4rem] border-2 border-slate-800 dark:border-zinc-300">
             <form
                 ref={formRef}
                 action={async () => {
@@ -148,9 +148,6 @@ export default function AddNewProjectForm() {
                 </CardContent>
 
                 <CardFooter>
-                    {/* <Button type="submit" className="font-bold">
-                        Add Project <PlusIcon className="ml-2 scale-90" />
-                    </Button> */}
                     <SubmitBtn />
                 </CardFooter>
             </form>

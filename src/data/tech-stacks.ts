@@ -1,4 +1,4 @@
-import { LucideIcon, Computer, User, DatabaseZap, Database, LucideStickyNote } from "lucide-react"
+import { LucideIcon, Computer, User, DatabaseZap, Database, StickyNote, ZapIcon } from "lucide-react"
 
 type techType = {
     title: string
@@ -20,12 +20,12 @@ export const tech: techType[] = [
     {
         title: "Tailwind CSS",
         link: "https://tailwindcss.com/",
-        icon: LucideStickyNote
+        icon: StickyNote
     },
     {
         title: "shadcn",
         link: "https://ui.shadcn.com/",
-        icon: LucideStickyNote
+        icon: ZapIcon
     },
     {
         title: "Prisma",

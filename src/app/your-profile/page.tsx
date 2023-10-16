@@ -25,18 +25,14 @@ export default async function ProfilePage() {
         }
     })
 
-    function deleteData() {
-
-    }
-
-
     if (!user) {
         redirect("/api/auth/signin")
     }
 
+
     return (
-        <section className="py-20">
-            <div className="py-20 flex flex-row items-center justify-center gap-x-64">
+        <section className="py-12 md:py-20">
+            <div className="py-20 flex flex-col md:flex-row items-center justify-center gap-y-20 md:gap-x-64">
                 <Image
                     src={user?.image as string}
                     width={400}
@@ -44,24 +40,24 @@ export default async function ProfilePage() {
                     placeholder="blur"
                     blurDataURL={user?.image as string}
                     alt="Opentyped user profile image"
-                    className="rounded-[15%] shadow-[20px_20px_15px] dark:shadow-0 shadow-black transition-all duration-200 ease-out hover:-rotate-12 hover:scale-110 hover:shadow-[0px_0px_0px]"
+                    className="rounded-[15%] shadow-[20px_20px_15px] scale-90 sm:scale-100 dark:shadow-0 shadow-black md:transition-all md:duration-200 md:ease-out md:hover:-rotate-12 md:hover:scale-110 md:hover:shadow-[0px_0px_0px]"
                 />
 
                 <div className="space-y-7">
                     <div>
                         <Label htmlFor="">Name:</Label>
-                        <h1 className="text-4xl font-bold">{user?.name}</h1>
+                        <h1 className="text-3xl sm:text-4xl font-bold">{user?.name}</h1>
                     </div>
 
                     <div>
                         <Label>Email:</Label>
-                        <p className="text-xl dark:text-zinc-300">{user?.email}</p>
+                        <p className="text-lg sm:text-xl dark:text-zinc-300">{user?.email}</p>
                     </div>
 
-                    <Separator orientation="horizontal" className="h-[10px] bg-zinc-700 dark:bg-zinc-500" />
+                    <Separator orientation="horizontal" className="h-[3px] bg-zinc-700 dark:bg-white" />
 
                     <div className="space-x-3">
-                        <Button variant={"destructive"}>Delete user</Button>
+                        <Button variant={"destructive"}>Delete my Profile</Button>
                     </div>
                 </div>
             </div>
@@ -69,9 +65,9 @@ export default async function ProfilePage() {
             <Separator orientation="horizontal" className="h-2" />
 
             <div className="py-20 space-y-12">
-                <h1 className="text-6xl text-center font-bold text-slate-600 dark:text-gray-200">Your contributed <br /> <span className="text-rose-500 underline">Projects</span></h1>
+                <h1 className="text-3xl xs:text-5xl sm:text-6xl text-center font-bold text-slate-600 dark:text-gray-200">Your contributed <br /> <span className="text-rose-500 underline">Projects</span></h1>
 
-                <div className="px-10 grid grid-cols-3 items-center gap-7">
+                <div className="px-3 xs:px-10 grid sm:grid-cols-2 md:grid-cols-3 items-center gap-7">
                     {usersProjects.map((project: Project) => (
                         <Link
                             href={`/projects/${project.id}`}
