@@ -1,11 +1,24 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import { GithubIcon } from "lucide-react";
 
 import { prisma } from "@/lib/db";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle
+} from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator";
-import LoadingState from "@/components/loading-state";
 import { Button } from "@/components/ui/button";
+import LoadingState from "@/components/loading-state";
+
+
+export const metadata: Metadata = ({
+    title: "Projects page",
+    robots: "index, follow",
+})
 
 
 export default async function SingleProjectPage(
@@ -24,7 +37,7 @@ export default async function SingleProjectPage(
     const user = await prisma.user.findFirst({
         where: {
             id: uploaderId,
-        }
+        },
     })
 
 
@@ -37,15 +50,15 @@ export default async function SingleProjectPage(
     }
 
     return (
-        <Card className="w-[40vw] mx-auto my-24 border-2 border-black dark:border-zinc-300">
-            <CardHeader>
+        <Card className="max-w-md mx-auto my-24 border-2 border-black dark:border-zinc-300">
+            <CardHeader className="p-3 sm:p-5">
                 <CardTitle className="text-center text-4xl">{project?.title}</CardTitle>
                 <CardDescription className="text-lg text-center">{project?.description}</CardDescription>
             </CardHeader>
 
             <Separator className="my-7 h-[3px] bg-zinc-800 dark:bg-zinc-100" />
 
-            <CardContent className="flex flex-row items-center justify-around">
+            <CardContent className="flex flex-col gap-y-10 sm:gap-0 sm:flex-row items-center justify-around">
                 <div>
                     <h1 className="text-muted-foreground">Uploaded by:</h1>
                     <p className="text-lg underline font-bold">{user?.name}</p>

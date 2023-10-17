@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Session } from 'next-auth'
 import { Github, StarIcon } from 'lucide-react'
 
@@ -55,7 +56,7 @@ export default async function Home() {
 
             <TextOpacityAnimation
                 content=" 'OpenTyped' is a open-sourced and vibrant community-driven platform that celebrates the power of open source projects. Whether you're a developer seeking exciting projects to contribute to or a project owner looking to showcase your work, OpenTyped is here to connect you with a world of opportunities."
-                className="text-6xl h-screen dark:text-slate-300 font-bold text-left leading-tight w-[90%] mx-auto"
+                className="py-12 md:py-16 dark:text-slate-300 font-bold text-left w-[90%] mx-auto"
             />
         </section>
     )

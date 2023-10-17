@@ -14,7 +14,7 @@ import {
 
 export const metadata: Metadata = ({
     title: "Projects || Opentyped",
-    description: "",
+    description: "List of all projects in Opentyped",
     keywords: ["open source", "opentyped", "projects of opentyped"],
     robots: "index, follow",
 })
@@ -33,12 +33,12 @@ export default async function Projects() {
             </h1>
 
             {allProjects.length <= 0 ? (
-                <h1>No projects</h1>
+                <h1 className="h-[50vh] text-xl flex items-center justify-center">No projects</h1>
             ) : (
                 <div className="grid sm:grid-cols-2 md:grid-cols-3 items-center mt-10 md:mt-20 gap-7 px-3 sm:px-5">
                     {allProjects.map((project: Project) => (
                         <Link key={project.id} href={`/projects/${project.id}`}>
-                            <Card className="max-w-md border-black dark:border-zinc-300 transition-all duration-300 ease-out hover:scale-110 hover:shadow-zinc-900 hover:dark:shadow-zinc-400 hover:shadow-[0px_0px_30px]">
+                            <Card className="max-w-md text-center xs:text-left border-2 border-black dark:border-zinc-300 sm:dark:border-zinc-300 sm:transition-all sm:duration-300 sm:ease-out sm:hover:scale-110 sm:hover:shadow-zinc-900 sm:hover:dark:shadow-zinc-400 sm:hover:shadow-[0px_0px_30px]">
                                 <CardHeader>
                                     <CardTitle className="text-3xl underline">{project.title}</CardTitle>
                                     <CardDescription className="text-lg leading-snug">{project.description}</CardDescription>

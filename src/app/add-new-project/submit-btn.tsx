@@ -1,5 +1,5 @@
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
-import { PlusIcon, LucideStopCircle } from "lucide-react";
+import { PlusIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -16,7 +16,7 @@ export default function SubmitBtn() {
         >
             {pending ? (
                 <span className="flex items-center justify-center gap-x-1">
-                    Adding... <LucideStopCircle />
+                    Adding...
                 </span>
             ) : (
                 <span className="flex items-center justify-center gap-x-1">

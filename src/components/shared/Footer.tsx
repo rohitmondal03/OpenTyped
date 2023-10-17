@@ -1,8 +1,69 @@
 import Link from "next/link";
+import {
+    Computer,
+    User,
+    DatabaseZap,
+    Database,
+    StickyNote,
+    ZapIcon,
+    GithubIcon,
+    LinkedinIcon,
+    TwitterIcon
+} from "lucide-react"
 
 import { Separator } from "@/components/ui/separator";
-import { socialProfileData } from "@/data/social-profils";
-import { tech } from "@/data/tech-stacks";
+
+
+const tech: techStackType[] = [
+    {
+        title: "nextJS",
+        link: "https://nextjs.org/",
+        icon: Computer
+    },
+    {
+        title: "next-auth",
+        link: "https://next-auth.js.org/",
+        icon: User
+    },
+    {
+        title: "Tailwind CSS",
+        link: "https://tailwindcss.com/",
+        icon: StickyNote
+    },
+    {
+        title: "shadcn",
+        link: "https://ui.shadcn.com/",
+        icon: ZapIcon
+    },
+    {
+        title: "Prisma",
+        link: "https://www.prisma.io/",
+        icon: DatabaseZap
+    },
+    {
+        title: "Railway DB",
+        link: "https://railway.app/",
+        icon: Database
+    },
+]
+
+const socialProfileData: socialProfileType[]= [
+    {
+        link: "https://github.com/rohitmondal03",
+        logo: GithubIcon,
+        title: "Github",
+    },
+    {
+        link: "https://twitter.com/RohitMo62534745",
+        logo: TwitterIcon,
+        title: "Twitter"
+    },
+    {
+        link: "https://www.linkedin.com/in/rohit-mondal-61662a16b/",
+        logo: LinkedinIcon,
+        title: "LinkedIn"
+    }
+]
 
 
 export default function Footer() {
@@ -39,14 +100,14 @@ export default function Footer() {
             <div className="space-y-3">
                 <h1 className="text-2xl font-bold">🧑‍💻 Made with -</h1>
 
-                <div className="grid xs:grid-cols-2 sm:grid-cols-3 place-items-center gap-y-3">
+                <div className="grid xs:grid-cols-2 sm:grid-cols-3 place-items-center gap-y-1 xs:gap-y-3">
                     {tech.map((data) => (
                         <Link
                             href={data.link}
                             target="_blank"
                             className="underline text-lg flex gap-x-2"
                         >
-                            <data.icon/> {data.title}
+                            <data.icon /> {data.title}
                         </Link>
                     ))}
                 </div>

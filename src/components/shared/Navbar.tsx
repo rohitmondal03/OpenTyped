@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Session } from "next-auth";
-import { User, Plus, AlignCenter, MoveRight } from "lucide-react"
+import { User, Plus } from "lucide-react"
 
 import { getAuthSession } from "@/lib/nextauth";
 import { ModeToggle } from "@/components/theme/mode-toggle";
@@ -14,21 +14,12 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-    Sheet,
-    SheetClose,
-    SheetContent,
-    SheetDescription,
-    SheetFooter,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-} from "@/components/ui/sheet"
 import Logo from "../logo";
+import NavbarDropdown from "../navbar-dropdown";
 
 
 export default async function Navbar() {
-    const session: Session | null = await getAuthSession();
+    const session: Session = await getAuthSession() as Session;
 
     // user image
     const userImage = session?.user?.image
@@ -51,7 +42,7 @@ export default async function Navbar() {
             <div className="hidden md:flex md:flex-row md:items-center md:gap-x-6">
                 <ModeToggle />
 
-                {session ? (
+                {session?.user ? (
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Avatar className="cursor-pointer transition-all duration-300 ease-out hover:rotate-12 hover:scale-125">
@@ -106,45 +97,8 @@ export default async function Navbar() {
 
             <div className="flex flex-row items-center justify-center gap-x-3 sm:gap-x-8 md:hidden">
                 <ModeToggle />
-
-                <Sheet>
-                    <SheetTrigger asChild>
-                        <AlignCenter className="scale-110" />
-                    </SheetTrigger>
-
-                    <SheetContent className="px-3 md:px-10">
-                        <SheetHeader>
-                            <SheetTitle className="text-2xl xs:text-3xl sm:text-4xl">OpenTyped</SheetTitle>
-                        </SheetHeader>
-
-                        <div className="grid place-items-center gap-y-6 py-20">
-                            {smallDeviceLinks.map((data) => (
-                                <Link href={data.route}>
-                                    <SheetClose className="flex gap-x-3 scale-125 sm:text-2xl">
-                                        {data.title}
-                                    </SheetClose>
-                                </Link>
-                            ))}
-                        </div>
-                    </SheetContent>
-                </Sheet>
+                <NavbarDropdown />
             </div>
         </nav>
     );
 }
-
-
-const smallDeviceLinks: { route: string, title: string }[] = [
-    {
-        route: "/your-profile",
-        title: "Profile",
-    },
-    {
-        route: "/projects",
-        title: "Projects",
-    },
-    {
-        route: "/add-new-project",
-        title: "Add new Project",
-    },
-]

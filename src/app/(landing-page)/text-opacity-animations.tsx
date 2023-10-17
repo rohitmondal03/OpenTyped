@@ -38,7 +38,7 @@ export default function TextOpacityAnimation(
     }, []);
 
     return (
-        <p className={cn(className, "reveal-type")}>
+        <p className={cn("reveal-type", className)}>
             {content}
         </p>
     )
