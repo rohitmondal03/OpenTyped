@@ -58,8 +58,8 @@ export default function AddNewProjectForm() {
         <Card className="w-[95%] sm:w-[85%] md:w-2/5 mx-auto my-[4rem] border-2 border-slate-800 dark:border-zinc-300">
             <form
                 ref={formRef}
-                action={() => {
-                    submitNewProject(enteredData)
+                action={async () => {
+                    await submitNewProject(enteredData)
                     redirect("/projects")  // to redirect to projects page after adding the project
                 }}
             >

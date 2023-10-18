@@ -11,6 +11,9 @@ import {
     CardTitle
 } from "@/components/ui/card"
 
+export const dynamic= "auto"
+export const revalidate= "true"
+
 
 export const metadata: Metadata = ({
     title: "Projects || Opentyped",
