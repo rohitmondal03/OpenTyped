@@ -55,7 +55,7 @@ export default function AddNewProjectForm() {
 
 
     return (
-        <Card className="min-w-[95%] max-w-2/5 mx-auto my-[4rem] border-2 border-slate-800 dark:border-zinc-300">
+        <Card className="w-[95%] sm:w-[85%] md:w-2/5 mx-auto my-[4rem] border-2 border-slate-800 dark:border-zinc-300">
             <form
                 ref={formRef}
                 action={() => {
