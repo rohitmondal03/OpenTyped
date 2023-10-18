@@ -3,15 +3,8 @@
 import { prisma } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 
-type enteredDataType = {
-    owner_name: string
-    title: string
-    description: string
-    github_link: string
-    userId: string
-}
 
-export async function submitNewProject(enteredData: enteredDataType) {
+export async function submitNewProject(enteredData: ProjectEntryType) {
     await prisma.project.create({
         data: enteredData
     });
