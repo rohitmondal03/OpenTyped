@@ -1,5 +1,7 @@
-import { getAuthSession } from "@/lib/nextauth"
 import { redirect } from "next/navigation";
+
+import { getAuthSession } from "@/lib/nextauth"
+
 
 export default async function AddNewProjectLayout({children} : {children: any}) {
     const session = await getAuthSession();
@@ -7,7 +9,6 @@ export default async function AddNewProjectLayout({children} : {children: any}) 
     // get user
     const user = session?.user;
 
-    // console.log(user)
     if (!user) {
         redirect("/projects")
     }

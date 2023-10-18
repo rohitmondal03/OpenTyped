@@ -1,8 +1,9 @@
+"use client"
+
 import Link from "next/link";
-import { Session } from "next-auth";
+import { useSession } from "next-auth/react";
 import { User, Plus } from "lucide-react"
 
-import { getAuthSession } from "@/lib/nextauth";
 import { ModeToggle } from "@/components/theme/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -14,21 +15,12 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import Logo from "../logo";
-import NavbarDropdown from "../navbar-dropdown";
+import Logo from "../components/logo";
+import NavbarDropdown from "../components/navbar-dropdown";
 
 
-export default async function Navbar() {
-    const session: Session = await getAuthSession() as Session;
-
-    // user image
-    const userImage = session?.user?.image
-
-    // user name
-    const userName = session?.user?.name;
-
-    // first char in name of user
-    const firstCharOfUserName = userName?.charAt(0);
+export default function Navbar() {
+    const { data: session } = useSession();
 
 
     return (
@@ -46,14 +38,18 @@ export default async function Navbar() {
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Avatar className="cursor-pointer transition-all duration-300 ease-out hover:rotate-12 hover:scale-125">
-                                <AvatarImage src={userImage as string} alt="image" />
-                                <AvatarFallback>{firstCharOfUserName}</AvatarFallback>
+                                <AvatarImage src={session.user.image as string} alt="image" />
+                                <AvatarFallback>
+                                    {session.user.name?.toUpperCase().charAt(0)}
+                                </AvatarFallback>
                             </Avatar>
                         </DropdownMenuTrigger>
 
                         <DropdownMenuContent className="py-4 space-y-4">
                             <DropdownMenuGroup>
-                                <h1 className="text-lg text-center"><span className="font-bold">{userName}</span></h1>
+                                <h1 className="text-lg text-center">
+                                    <span className="font-bold">{session.user.name}</span>
+                                </h1>
                             </DropdownMenuGroup>
 
                             <DropdownMenuSeparator className="h-[1px] bg-black dark:bg-zinc-500" />

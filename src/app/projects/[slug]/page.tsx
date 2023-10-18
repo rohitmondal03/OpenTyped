@@ -16,7 +16,7 @@ import LoadingState from "@/components/loading-state";
 
 
 export const metadata: Metadata = ({
-    title: "Projects page",
+    title: "Project page",
     robots: "index, follow",
 })
 

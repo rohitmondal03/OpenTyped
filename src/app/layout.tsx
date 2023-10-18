@@ -3,8 +3,9 @@ import { ReactNode } from 'react'
 
 import { ThemeProvider } from '@/components/theme/theme-provider'
 import { TooltipProvider } from '@/components/ui/tooltip'
-import Navbar from '@/components/shared/Navbar'
-import Footer from '@/components/shared/Footer'
+import AuthProvider from '@/components/shared/AuthProvider'
+import Navbar from '@/app/Navbar'
+import Footer from '@/app/Footer'
 
 import "./styles/globals.css"
 
@@ -31,9 +32,11 @@ export default async function RootLayout(
                     disableTransitionOnChange
                 >
                     <TooltipProvider>
-                        <Navbar />
-                        {children}
-                        <Footer />
+                        <AuthProvider>
+                            <Navbar />
+                            {children}
+                            <Footer />
+                        </AuthProvider>
                     </TooltipProvider>
                 </ThemeProvider>
             </body>

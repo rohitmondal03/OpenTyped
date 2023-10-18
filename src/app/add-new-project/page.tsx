@@ -19,7 +19,6 @@ export default async function Page() {
     // get user
     const user = session?.user;
 
-    // console.log(user)
     if (!user) {
         redirect("/api/auth/signin")
     }

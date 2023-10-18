@@ -1,13 +1,10 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import { Session } from 'next-auth'
-import { Github, StarIcon } from 'lucide-react'
+import { Github } from 'lucide-react'
 
 import { getAuthSession } from '@/lib/nextauth'
 import { Button } from '@/components/ui/button'
 import TextOpacityAnimation from './text-opacity-animations'
-
-import img from "../../../public/img-3.jpg"
 
 
 export default async function Home() {

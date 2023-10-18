@@ -45,7 +45,7 @@ export default function AddNewProjectForm() {
     });
 
 
-    // API call to retrieve user info
+    // API call to get user info
     useEffect(() => {
         async function getUser() {
             await fetch("/api/getUser")
