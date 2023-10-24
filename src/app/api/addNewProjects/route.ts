@@ -5,17 +5,17 @@ import { prisma } from "@/lib/db";
 
 
 export async function POST(request: NextRequest) {
-    const body: Project = await request.json();
+  const body: Project = await request.json();
 
-    const { owner_name, title, description, github_link, userId } = body
+  const { owner_name, title, description, github_link, userId } = body
 
-    await prisma.project.create({
-        data:{
-            owner_name,
-            title,
-            description ,
-            github_link,
-            userId
-        }
-    })
+  await prisma.project.create({
+    data: {
+      owner_name,
+      title,
+      description,
+      github_link,
+      userId
+    }
+  })
 }

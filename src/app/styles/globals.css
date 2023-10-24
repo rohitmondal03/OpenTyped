@@ -102,22 +102,22 @@ nav h1,
 } */
 
 @media (min-width: 325px) {
-    .reveal-type {
-        line-height: 2rem;
-        font-size: 1.5rem;
-    }
+  .reveal-type {
+    line-height: 2rem;
+    font-size: 1.5rem;
+  }
 }
 
 @media (min-width: 640px) {
-    .reveal-type {
-        line-height: 2.75rem;
-        font-size: 2.25rem;
-    }
+  .reveal-type {
+    line-height: 2.75rem;
+    font-size: 2.25rem;
+  }
 }
 
-@media (min-width: 900px){
-    .reveal-type {
-        line-height: 4.5rem;
-        font-size: 3.75rem;
-    }
+@media (min-width: 900px) {
+  .reveal-type {
+    line-height: 4.5rem;
+    font-size: 3.75rem;
+  }
 }

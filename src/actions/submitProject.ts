@@ -5,9 +5,9 @@ import { revalidatePath } from "next/cache";
 
 
 export async function submitNewProject(enteredData: ProjectEntryType) {
-    await prisma.project.create({
-        data: enteredData
-    });
+  await prisma.project.create({
+    data: enteredData
+  });
 
-    revalidatePath("/projects");
+  revalidatePath("/projects");
 }
