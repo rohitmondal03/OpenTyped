@@ -92,7 +92,7 @@ export default async function ProfilePage() {
               href={`/projects/${project.id}`}
               key={project.id}
             >
-              <Card className="max-w-md text-center xs:text-left border-black dark:border-zinc-300 transition-all duration-300 ease-out hover:scale-110 hover:shadow-zinc-900 hover:dark:shadow-zinc-400 hover:shadow-[0px_0px_50px]">
+              <Card className="max-w-md text-center rounded-xl xs:text-left border-2 border-black dark:border-zinc-300 sm:dark:border-zinc-300 sm:transition-all sm:duration-300 sm:ease-out sm:shadow-zinc-900 sm:dark:shadow-zinc-200 sm:shadow-[10px_10px_5px] sm:-translate-x-2 sm:-translate-y-2 sm:hover:scale-100 hover:translate-x-0 hover:translate-y-0 hover:shadow-[0px_0px_20px] hover:round">
                 <CardHeader>
                   <CardTitle className="text-3xl underline">{project.title}</CardTitle>
                   <CardDescription className="text-lg leading-snug">{project.description}</CardDescription>
