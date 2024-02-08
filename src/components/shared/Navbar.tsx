@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { User, Plus } from "lucide-react"
+import { User } from "lucide-react"
 
+import { cn } from "@/lib/utils";
 import { ModeToggle } from "@/components/theme/mode-toggle";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
   DropdownMenu,
@@ -68,20 +69,33 @@ export default function Navbar() {
             </DropdownMenuContent>
           </DropdownMenu>
         ) : (
-          <Link href={`/api/auth/signin`}>
-            <Button>Sign In</Button>
+          <Link
+            href={"/api/auth/signin"}
+            className={cn(buttonVariants({
+              variant: "default"
+            }))}
+          >
+            Sign In
           </Link>
         )}
 
-        <Link href={`/projects`}>
-          <Button>Projects</Button>
+        <Link
+          href={"/projects"}
+          className={cn(buttonVariants({
+            variant: "default"
+          }))}
+        >
+          Projects
         </Link>
 
         {session ? (
-          <Link href={"/add-new-project"}>
-            <Button >
-              Add Project
-            </Button>
+          <Link
+            href={"/add-new-project"}
+            className={cn(buttonVariants({
+              variant: "default"
+            }))}
+          >
+            Add Project
           </Link>
         ) : (
           null

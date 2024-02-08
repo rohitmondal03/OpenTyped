@@ -46,7 +46,7 @@ export default async function ProfilePage() {
 
 
   return (
-    <section className="py-12 md:py-20">
+    <section className="py-0 md:py-10">
       <div className="py-20 flex flex-col md:flex-row items-center justify-center gap-y-20 md:gap-x-64">
         <Image
           src={user?.image as string}
@@ -86,13 +86,13 @@ export default async function ProfilePage() {
       <div className="py-20 space-y-12">
         <h1 className="text-3xl xs:text-5xl sm:text-6xl text-center font-bold text-slate-600 dark:text-gray-200">Your contributed <br /> <span className="text-rose-500 underline">Projects</span></h1>
 
-        <div className="px-3 xs:px-5 sm:px-10 grid sm:grid-cols-2 md:grid-cols-3 items-center gap-7">
+        <div className="px-3 xs:px-5 sm:px-10 grid sm:grid-cols-2 lg:grid-cols-3 items-center gap-7">
           {usersProjects.map((project: Project) => (
             <Link
               href={`/projects/${project.id}`}
               key={project.id}
             >
-              <Card className="max-w-md text-center rounded-xl xs:text-left border-2 border-black dark:border-zinc-300 sm:dark:border-zinc-300 sm:transition-all sm:duration-300 sm:ease-out sm:shadow-zinc-900 sm:dark:shadow-zinc-200 sm:shadow-[10px_10px_5px] sm:-translate-x-2 sm:-translate-y-2 sm:hover:scale-105 sm:hover:bg-slate-900 hover:translate-x-0 hover:translate-y-0 hover:shadow-[0px_0px_0px]">
+              <Card className="sm:h-80 w-full text-center rounded-xl xs:text-left border-2 border-black dark:border-zinc-300 sm:dark:border-zinc-300 sm:transition-all sm:duration-300 sm:ease-out sm:shadow-zinc-900 sm:dark:shadow-zinc-200 sm:shadow-[10px_10px_5px] sm:-translate-x-2 sm:-translate-y-2 sm:hover:scale-105 sm:hover:bg-slate-200 sm:hover:dark:bg-slate-900 hover:translate-x-0 hover:translate-y-0 hover:shadow-[0px_0px_0px]">
                 <CardHeader>
                   <CardTitle className="text-3xl underline">{project.title}</CardTitle>
                   <CardDescription className="text-lg leading-snug">{project.description}</CardDescription>

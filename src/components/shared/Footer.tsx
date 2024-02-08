@@ -103,6 +103,7 @@ export default function Footer() {
         <div className="grid xs:grid-cols-2 sm:grid-cols-3 place-items-center gap-y-1 xs:gap-y-3">
           {tech.map((data) => (
             <Link
+              key={data.link}
               href={data.link}
               target="_blank"
               className="underline text-lg flex gap-x-2"

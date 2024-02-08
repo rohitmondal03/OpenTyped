@@ -52,13 +52,13 @@ export default async function SingleProjectPage(
 
   return (
     <section className="px-4 sm:px-0">
-      <Card className="max-w-md mx-auto my-24 rounded-xl border-2 border-black dark:border-zinc-300">
+      <Card className="max-w-md mx-auto my-24 rounded-xl border-2 border-black dark:border-zinc-100 shadow-[5px_5px_0px]">
         <CardHeader className="p-3 sm:p-5">
           <CardTitle className="text-center text-4xl">{project?.title}</CardTitle>
           <CardDescription className="text-lg text-center">{project?.description}</CardDescription>
         </CardHeader>
 
-        <Separator className="my-7 h-[3px] bg-zinc-800 dark:bg-zinc-100" />
+        <Separator className="my-7 h-[3px] bg-zinc-500" />
 
         <CardContent className="flex flex-col gap-y-10 sm:gap-0 sm:flex-row items-center justify-around">
           <div>
