@@ -27,6 +27,7 @@ export default function Icon() {
           color: 'black',
           borderRadius: "25%",
           fontWeight: 900,
+          fontFamily: "monospace",
           padding: "1px"
         }}
         className='logo'

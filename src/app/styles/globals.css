@@ -87,11 +87,6 @@
 }
 
 /* CUSTOM STYLES */
-* {
-  font-family: "Ubuntu", sans-serif;
-  scroll-behavior: smooth;
-}
-
 nav h1,
 .logo {
   font-family: "Dela Gothic One", cursive;
@@ -110,14 +105,14 @@ nav h1,
 
 @media (min-width: 640px) {
   .reveal-type {
-    line-height: 2.75rem;
+    line-height: 3rem;
     font-size: 2.25rem;
   }
 }
 
 @media (min-width: 900px) {
   .reveal-type {
-    line-height: 4.5rem;
-    font-size: 3.75rem;
+    line-height: 4rem;
+    font-size: 3rem;
   }
 }

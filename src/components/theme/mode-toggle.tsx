@@ -18,7 +18,7 @@ export function ModeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div className="rounded-full border-2 border-zinc-500 p-2 md:p-3">
+        <div className="border-2 border-gray-500 rounded-md cursor-pointer p-2 md:p-3">
           <SunIcon className="h-[1.2rem] w-[1.2rem] hidden transition-all dark:block" />
           <MoonIcon className="h-[1.2rem] w-[1.2rem] block transition-all dark:hidden" />
           <span className="sr-only">Toggle theme</span>

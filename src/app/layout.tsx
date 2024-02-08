@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Montserrat } from "next/font/google"
 import { ReactNode } from 'react'
 
 import { ThemeProvider } from '@/components/theme/theme-provider'
@@ -8,6 +9,12 @@ import Navbar from '@/components/shared/Navbar'
 import Footer from '@/components/shared/Footer'
 
 import "./styles/globals.css"
+
+
+const montFont = Montserrat({
+  weight: ["400", "600", "800"],
+  preload: false
+})
 
 
 export const metadata: Metadata = {
@@ -24,7 +31,7 @@ export default async function RootLayout(
 ) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body className={montFont.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

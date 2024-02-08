@@ -27,13 +27,10 @@ export default function Navbar() {
     <nav className="flex flex-row items-center justify-between px-3 sm:px-6 md:px-0 md:justify-around py-4 sm:py-8">
       <Link href={`/`} className="flex flex-row gap-x-1 sm:gap-x-3 items-center justify-center">
         <Logo />
-        <h1 className="hidden xs:block xs:text-2xl sm:text-4xl md:text-5xl cursor-pointer">OpenTyped</h1>
       </Link>
 
 
       <div className="hidden md:flex md:flex-row md:items-center md:gap-x-6">
-        <ModeToggle />
-
         {session?.user ? (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -82,13 +79,15 @@ export default function Navbar() {
 
         {session ? (
           <Link href={"/add-new-project"}>
-            <Button variant={"secondary"} className="flex gap-x-2">
-              Add Project <Plus />
+            <Button >
+              Add Project
             </Button>
           </Link>
         ) : (
           null
         )}
+
+        <ModeToggle />
       </div>
 
       <div className="flex flex-row items-center justify-center gap-x-3 sm:gap-x-8 md:hidden">

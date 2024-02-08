@@ -25,8 +25,9 @@ export default function Icon() {
           alignItems: 'center',
           justifyContent: 'center',
           color: 'black',
-          borderRadius: "25%",
-          fontWeight: 900,
+          borderRadius: "10%",
+          fontWeight: 'bold',
+          fontFamily: "monospace",
           padding: "1px"
         }}
         className='logo'

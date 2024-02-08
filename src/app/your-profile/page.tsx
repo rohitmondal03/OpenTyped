@@ -55,7 +55,7 @@ export default async function ProfilePage() {
           placeholder="blur"
           blurDataURL={user?.image as string}
           alt="Opentyped user profile image"
-          className="rounded-[15%] shadow-[20px_20px_15px] scale-90 sm:scale-100 dark:shadow-0 shadow-black md:transition-all md:duration-200 md:ease-out md:hover:-rotate-12 md:hover:scale-110 md:hover:shadow-[0px_0px_0px]"
+          className="rounded-[5%] scale-90 sm:scale-100 dark:shadow-0 shadow-black"
         />
 
         <div className="space-y-7">
@@ -92,7 +92,7 @@ export default async function ProfilePage() {
               href={`/projects/${project.id}`}
               key={project.id}
             >
-              <Card className="max-w-md text-center rounded-xl xs:text-left border-2 border-black dark:border-zinc-300 sm:dark:border-zinc-300 sm:transition-all sm:duration-300 sm:ease-out sm:shadow-zinc-900 sm:dark:shadow-zinc-200 sm:shadow-[10px_10px_5px] sm:-translate-x-2 sm:-translate-y-2 sm:hover:scale-100 hover:translate-x-0 hover:translate-y-0 hover:shadow-[0px_0px_20px] hover:round">
+              <Card className="max-w-md text-center rounded-xl xs:text-left border-2 border-black dark:border-zinc-300 sm:dark:border-zinc-300 sm:transition-all sm:duration-300 sm:ease-out sm:shadow-zinc-900 sm:dark:shadow-zinc-200 sm:shadow-[10px_10px_5px] sm:-translate-x-2 sm:-translate-y-2 sm:hover:scale-105 sm:hover:bg-slate-900 hover:translate-x-0 hover:translate-y-0 hover:shadow-[0px_0px_0px]">
                 <CardHeader>
                   <CardTitle className="text-3xl underline">{project.title}</CardTitle>
                   <CardDescription className="text-lg leading-snug">{project.description}</CardDescription>

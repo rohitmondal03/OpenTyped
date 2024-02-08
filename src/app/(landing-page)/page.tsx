@@ -2,8 +2,9 @@ import Link from 'next/link'
 import { Session } from 'next-auth'
 import { Github } from 'lucide-react'
 
+import { cn } from '@/lib/utils'
 import { getAuthSession } from '@/lib/nextauth'
-import { Button } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 import TextOpacityAnimation from './_components/text-opacity-animations'
 
 
@@ -16,7 +17,7 @@ export default async function Home() {
 
   return (
     <section className="text-center">
-      <div className="h-[80vh] my-5 flex flex-col gap-y-10 items-center justify-center">
+      <div className="h-[75vh] flex flex-col gap-y-6 items-center justify-center">
         <Link
           href={`https://github.com/rohitmondal03/opentyped`}
           target='_blank'
@@ -25,35 +26,36 @@ export default async function Home() {
           Give a star on Github <Github />
         </Link>
 
-        <div className='space-y-6 md:space-y-4 text-3xl xs:text-4xl sm:text-5xl md:text-6xl'>
-          <h1 className="dark:text-zinc-200">Welcome to <span className="logo text-amber-400 underline">OpenTyped</span></h1>
-          <h1 className="text-pink-500 dark:text-pink-600 font-semibold">Gateway to the World of Open Source Projects!</h1>
+        <div className='space-y-6 md:space-y-4'>
+          <h1 className="font-bold dark:text-zinc-200 text-3xl xs:text-4xl sm:text-5xl md:text-6xl">Welcome to <span className="logo text-amber-500 underline">OpenTyped</span></h1>
+          <h1 className="font-semibold text-2xl text-muted-foreground">Gateway to the World of Open Source Projects!</h1>
         </div>
 
         <div className='md:w-[40vw] mx-auto flex flex-row gap-x-2 sm:gap-x-5 lg:gap-x-0 justify-around items-center px-2 xs:px-0'>
-          <Button className='xs:text-md sm:text-lg md:text-xl py-3 sm:py-6 rounded-xl w-fit' variant={`default`}>
-            <Link href={`/projects`}>
-              Explore Projects
-            </Link>
-          </Button>
+          <Link
+            href={`/projects`}
+            className={cn(buttonVariants({
+              variant: "default"
+            }))}
+          >
+            Explore Projects
+          </Link>
 
-          <Button className='xs:text-md sm:text-lg md:text-xl border-2 border-black dark:border-0 py-3 sm:py-6 rounded-xl' variant={`secondary`}>
-            {user ? (
-              <Link href={`/add-new-project`}>
-                Add new Project
-              </Link>
-            ) : (
-              <Link href={`/api/auth/signin`}>
-                Sign In
-              </Link>
-            )}
-          </Button>
+          <Link
+            href={user ? "/add-new-project" : "/api/auth/signin"}
+            className={cn(buttonVariants({
+              variant: "secondary"
+            }))}
+          >
+            {user ? 'Add New Project' : "Sign In "}
+          </Link>
         </div>
       </div>
 
+
       <TextOpacityAnimation
         content=" 'OpenTyped' is a open-sourced and vibrant community-driven platform that celebrates the power of open source projects. Whether you're a developer seeking exciting projects to contribute to or a project owner looking to showcase your work, OpenTyped is here to connect you with a world of opportunities."
-        className="py-12 md:py-16 dark:text-slate-300 font-bold text-left w-[90%] mx-auto"
+        className="py-12 md:py-16 dark:text-slate-300 font-bold text-left text-xl w-[90%] mx-auto"
       />
     </section>
   )
